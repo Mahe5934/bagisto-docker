@@ -56,7 +56,7 @@ ARG user
 COPY ./.configs/nginx/pools/www.cnf /usr/local/etc/php-fpm.d/www.conf
 
 # adding user
-RUN useradd -G www-data,root -u $uid -d /home/$user/bagisto bagisto
+RUN useradd -m -G www-data,root -u ${uid} ${user}
 RUN mkdir -p /home/$user/.composer && \
     chown -R $user:$user /home/$user
 
