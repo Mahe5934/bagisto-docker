@@ -71,4 +71,6 @@ RUN chown -R bagisto:www-data /var/www/html
 USER $user
 
 # setting work directory
-WORKDIR $container_project_path
+WORKDIR /var/www/html
+RUN git clone https://github.com/bagisto/bagisto.git .
+RUN composer install --no-dev --optimize-autoloader
