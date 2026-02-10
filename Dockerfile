@@ -1,3 +1,6 @@
+ARG user=bagisto
+ARG uid=1000
+
 # main image
 FROM php:8.3-fpm
 
@@ -61,8 +64,8 @@ RUN mkdir -p /home/$user/.composer && \
     chown -R $user:$user /home/$user
 
 # setting up project from `src` folder
-RUN chmod -R 775 $container_project_path
-RUN chown -R $user:www-data $container_project_path
+RUN chmod -R 775 /var/www/html
+RUN chown -R bagisto:www-data /var/www/html
 
 # changing user
 USER $user
